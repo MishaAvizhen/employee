@@ -21,5 +21,4 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return jdbcTemplate.query("SELECT * FROM department WHERE id=?", new Object[]{id}, new DepartmentMapper())
                 .stream().findAny().orElse(null);
     }
-
 }

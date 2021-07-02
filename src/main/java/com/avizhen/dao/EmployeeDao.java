@@ -5,15 +5,14 @@ import com.avizhen.entity.Employee;
 import java.util.List;
 
 public interface EmployeeDao {
-    Employee getEmployeeById(Integer id);
+    Employee getById(Integer id);
 
     List<Employee> getAllEmployees();
 
     void deleteEmployee(Integer id);
 
-    void updateEmployee(Integer id, Employee employee);
+    Employee updateEmployee(Integer id, Employee employee);
 
-    void createEmployee(Employee employee);
+    Employee createEmployee(Employee employee);
 
-    Integer generateUniqueKey();
 }

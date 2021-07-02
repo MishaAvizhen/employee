@@ -21,11 +21,13 @@ public class EmployeeRestController {
         List<Employee> all = employeeService.findAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
-        Employee employeeById = employeeService.findEmployeeById(id);
+        Employee employeeById = employeeService.findById(id);
         return new ResponseEntity<>(employeeById, HttpStatus.OK);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> removeEmployee(@PathVariable Integer id) {
         employeeService.deleteEmployee(id);

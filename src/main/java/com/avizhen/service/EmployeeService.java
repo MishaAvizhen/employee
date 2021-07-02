@@ -5,12 +5,15 @@ import com.avizhen.entity.Employee;
 import java.util.List;
 
 public interface EmployeeService {
+
     List<Employee> findAll();
 
-    Employee findEmployeeById(Integer id);
+    Employee findById(Integer id);
 
-    void createEmployee(Employee employee);
-    void updateEmployee(Integer id, Employee employee);
+    Employee createEmployee(Employee employee);
+
+    Employee updateEmployee(Integer id, Employee employee);
+
     void deleteEmployee(Integer id);
 
 }

@@ -1,13 +1,14 @@
 package com.avizhen.service.impl;
 
-import com.avizhen.dao.DepartmentDao;
 import com.avizhen.dao.EmployeeDao;
 import com.avizhen.entity.Department;
 import com.avizhen.entity.Employee;
+import com.avizhen.enums.Gender;
 import com.avizhen.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -27,18 +28,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public Employee findEmployeeById(Integer id) {
-        return employeeDao.getEmployeeById(id);
+    public Employee findById(Integer id) {
+        return employeeDao.getById(id);
     }
 
     @Override
-    public void createEmployee(Employee employee) {
-         employeeDao.createEmployee(employee);
+    public Employee createEmployee(Employee employee) {
+        return  employeeDao.createEmployee(employee);
     }
 
     @Override
-    public void updateEmployee(Integer id, Employee employee) {
-        employeeDao.updateEmployee(id,employee);
+    public Employee updateEmployee(Integer id, Employee employee) {
+        return employeeDao.updateEmployee(id, employee);
     }
 
     @Override
