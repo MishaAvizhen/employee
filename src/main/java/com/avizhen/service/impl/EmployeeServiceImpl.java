@@ -1,14 +1,11 @@
 package com.avizhen.service.impl;
 
 import com.avizhen.dao.EmployeeDao;
-import com.avizhen.entity.Department;
 import com.avizhen.entity.Employee;
-import com.avizhen.enums.Gender;
 import com.avizhen.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -34,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
-        return  employeeDao.createEmployee(employee);
+        return employeeDao.createEmployee(employee);
     }
 
     @Override

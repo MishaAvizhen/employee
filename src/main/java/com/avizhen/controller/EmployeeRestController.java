@@ -22,28 +22,28 @@ public class EmployeeRestController {
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
         Employee employeeById = employeeService.findById(id);
         return new ResponseEntity<>(employeeById, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/employees/{id}")
     public ResponseEntity<String> removeEmployee(@PathVariable Integer id) {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>(" Employee was deleted ", HttpStatus.OK);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/employees/{id}")
     public ResponseEntity<String> updateEmployee(@PathVariable Integer id,
                                              @RequestBody Employee employee) {
         employeeService.updateEmployee(id, employee);
         return new ResponseEntity<>("Employee was updated", HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/employees")
     public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
         employeeService.createEmployee(employee);
-        return new ResponseEntity<>("Employee was  created", HttpStatus.OK);
+        return new ResponseEntity<>("Employee was created", HttpStatus.OK);
     }
 }
