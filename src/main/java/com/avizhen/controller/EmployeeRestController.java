@@ -34,7 +34,7 @@ public class EmployeeRestController {
         return new ResponseEntity<>(" Employee was deleted ", HttpStatus.OK);
     }
 
-    @PatchMapping("/employees/{id}")
+    @PutMapping("/employees/{id}")
     public ResponseEntity<String> updateEmployee(@PathVariable Integer id,
                                              @RequestBody Employee employee) {
         employeeService.updateEmployee(id, employee);
