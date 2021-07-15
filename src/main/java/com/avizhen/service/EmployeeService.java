@@ -1,5 +1,6 @@
 package com.avizhen.service;
 
+import com.avizhen.dto.EmployeeDto;
 import com.avizhen.entity.Employee;
 
 import java.util.List;
@@ -10,9 +11,9 @@ public interface EmployeeService {
 
     Employee findById(Integer id);
 
-    Employee createEmployee(Employee employee);
+    Employee createEmployee(EmployeeDto employeeDto);
 
-    Employee updateEmployee(Integer id, Employee employee);
+    Employee updateEmployee(Integer id, EmployeeDto employeeDto);
 
     void deleteEmployee(Integer id);
 

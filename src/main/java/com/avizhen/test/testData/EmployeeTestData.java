@@ -5,10 +5,7 @@ import com.avizhen.entity.Employee;
 import com.avizhen.enums.Gender;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EmployeeTestData {
     private Map<Integer, Employee> employeesForTest = new HashMap<>();
@@ -59,7 +56,7 @@ public class EmployeeTestData {
         employee.setLastName(lastName);
         employee.setJobTitle("engineer");
         employee.setBirthDate(new Date(1220227200L * 1000));
-        employee.setDepartment(new Department(1, "it"));
+        employee.setDepartment(new Department(1, "it", Collections.emptyList()));
         employee.setGender(Gender.MAN);
         return employee;
     }
