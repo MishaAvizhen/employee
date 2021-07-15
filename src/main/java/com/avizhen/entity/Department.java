@@ -1,10 +1,12 @@
 package com.avizhen.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -19,10 +21,9 @@ public class Department {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "department",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "department", cascade = CascadeType.REMOVE)
     @JsonBackReference
     private List<Employee> employeeList;
-
 
 
 }
