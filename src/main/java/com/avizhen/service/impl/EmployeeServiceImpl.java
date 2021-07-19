@@ -42,6 +42,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findById(Integer id) {
         Optional<Employee> employeeOptional = employeeRepository.findById(id);
         log.info("Employee {}  was found", employeeOptional);
+        log.warn("warning level");
+        log.error("error level");
+        log.debug("debug level");
         return employeeOptional.orElseThrow(() -> new EmployeeServiceNotFoundException(id));
     }
 
