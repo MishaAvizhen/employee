@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.Date;
 
 @RestControllerAdvice
-
 public class GlobalExceptionController {
     private static final Logger log = Logger.getLogger(GlobalExceptionController.class);
     @ExceptionHandler(value = EmployeeServiceNotFoundException.class)

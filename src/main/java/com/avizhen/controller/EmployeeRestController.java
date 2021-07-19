@@ -3,6 +3,7 @@ package com.avizhen.controller;
 import com.avizhen.dto.EmployeeDto;
 import com.avizhen.entity.Employee;
 import com.avizhen.service.EmployeeService;
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/employees")
+@Api(tags = " Employee controller", description = " Operations with employee ")
 public class EmployeeRestController {
 
     private EmployeeService employeeService;
