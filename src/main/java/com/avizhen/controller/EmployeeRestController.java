@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping(value = "/employees")
 @Api(tags = " Employee controller", description = " Operations with employee ")
 public class EmployeeRestController {
@@ -51,7 +51,7 @@ public class EmployeeRestController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createEmployee(@RequestBody @Valid  EmployeeDto employeeDto) {
+    public ResponseEntity<String> createEmployee(@RequestBody @Valid EmployeeDto employeeDto) {
         employeeService.createEmployee(employeeDto);
         return new ResponseEntity<>("Employee was created", HttpStatus.OK);
     }
