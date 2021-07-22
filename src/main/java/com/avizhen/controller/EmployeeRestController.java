@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -43,14 +44,14 @@ public class EmployeeRestController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateEmployee(@PathVariable Integer id,
-                                                 @RequestBody EmployeeDto employeeDto) {
+                                                 @RequestBody @Valid EmployeeDto employeeDto) {
 
         employeeService.updateEmployee(id, employeeDto);
         return new ResponseEntity<>("Employee was updated", HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<String> createEmployee(@RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<String> createEmployee(@RequestBody @Valid  EmployeeDto employeeDto) {
         employeeService.createEmployee(employeeDto);
         return new ResponseEntity<>("Employee was created", HttpStatus.OK);
     }
