@@ -18,7 +18,6 @@ import java.util.Optional;
 @Service
 @Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
-
     private EmployeeRepository employeeRepository;
     private EmployeeConverter employeeConverter;
     private DepartmentService departmentService;
