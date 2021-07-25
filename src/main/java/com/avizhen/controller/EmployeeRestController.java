@@ -30,6 +30,14 @@ public class EmployeeRestController {
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
+    @GetMapping("/filter")
+    public ResponseEntity<Employee> getEmployeeByFirstAndLastName(@RequestParam(value = "firstName", required = false) String firstName,
+                                                                  @RequestParam(value = "lastName", required = false) String lastName) {
+        Employee employee = employeeService.findByFirstNameAndLastName(firstName, lastName);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
+    }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id) {
         Employee employeeById = employeeService.findById(id);

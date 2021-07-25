@@ -11,6 +11,7 @@ import com.avizhen.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Employee with info {}  was created", employee);
         return employeeRepository.save(employee);
     }
-
+    @Transactional
     @Override
     public Employee updateEmployee(Integer id, EmployeeDto employeeDto) {
         Employee employeeToUpdate = this.findById(id);
@@ -63,12 +64,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Employee with info {}  was updated ", employee);
         return employeeRepository.saveAndFlush(employee);
     }
-
+    @Transactional
     @Override
     public void deleteEmployee(Integer id) {
         Employee employee = this.findById(id);
         log.info("Employee with info {}  was deleted", employee);
         employeeRepository.delete(employee);
+    }
+
+    @Override
+    public Employee findByFirstNameAndLastName(String firstName, String lastName) {
+        Employee employee = employeeRepository.findByName1AndName2(firstName, lastName);
+        if (employee == null) {
+            throw new EmployeeServiceNotFoundException("Employee not found");
+        }
+        log.info("Employee {}  was found", employee);
+        return employee;
     }
 
     private Department CheckIfDepartmentExist(EmployeeDto employeeDto) {

@@ -17,4 +17,7 @@ public interface EmployeeService {
 
     void deleteEmployee(Integer id);
 
+    Employee findByFirstNameAndLastName(String firstName, String lastName);
+
+
 }
