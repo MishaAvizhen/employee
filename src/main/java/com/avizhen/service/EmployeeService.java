@@ -19,5 +19,7 @@ public interface EmployeeService {
 
     Employee findByFirstNameAndLastName(String firstName, String lastName);
 
+    String testSendMessage( EmployeeDto employeeDto);
+
 
 }

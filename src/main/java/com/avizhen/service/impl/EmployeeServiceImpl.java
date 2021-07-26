@@ -10,6 +10,8 @@ import com.avizhen.service.DepartmentService;
 import com.avizhen.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Employee with info {}  was created", employee);
         return employeeRepository.save(employee);
     }
+
     @Transactional
     @Override
     public Employee updateEmployee(Integer id, EmployeeDto employeeDto) {
@@ -64,6 +67,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.info("Employee with info {}  was updated ", employee);
         return employeeRepository.saveAndFlush(employee);
     }
+
     @Transactional
     @Override
     public void deleteEmployee(Integer id) {
@@ -80,6 +84,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         log.info("Employee {}  was found", employee);
         return employee;
+    }
+
+    @Override
+    @JmsListener(destination = "test")
+    @SendTo("test-answer")
+    public String testSendMessage(EmployeeDto employeeDto) {
+        log.info("JMS test employee {}", employeeDto);
+
+        return "Return: " + employeeDto;
     }
 
     private Department CheckIfDepartmentExist(EmployeeDto employeeDto) {
